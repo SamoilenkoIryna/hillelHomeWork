@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <Script>
+        var answer = prompt('Please enter your age');
+        var count = answer % 100;
+        if (count >= 5 && count <= 20) {
+            alert('Вам' + ' ' + answer + ' ' + 'лет');
+        } else {
+            count = count % 10;
+            if (count == 1) {
+                alert('Вам' + ' ' + answer + ' ' + 'год')
+            } else if (count >= 2 && count <= 4) {
+                alert('Вам' + ' ' + answer + ' ' + 'года')
+            } else {
+                alert('Вам' + ' ' + answer + ' ' + 'лет')
+            }
+        }
+    </Script>
+</body>
+
+</html>

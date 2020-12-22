@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <Script>
+        var height = prompt('specify the height of the Christmas tree');
+        var record = "";
+
+        for (var i = 0; i < height; i++) {
+            for (var space = 0; space < height - i; space++)
+                record += " ";
+            for (var star = 0; star < 2 * i + 1; star++)
+                record += "*";
+            record += "\n";
+        }
+
+        alert(record);
+    </Script>
+</body>
+
+</html>

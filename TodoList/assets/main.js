@@ -1,16 +1,13 @@
 let taskList = {
     todoList: [],
-    addToDo(item) {
-        const filterList = this.todoList.filter(function (todoTask) {
-            if (todoTask.id === item.id) {
-                return true;
-            } else {
-                false;
-            }
-        })
-        if (filterList.length === 0) {
-            this.todoList.push(item)
+    addToDo(text) {
+        const toDo = {
+            status: false,
+            text,
+            id: Date.now()
         }
+            this.todoList.push(toDo)
+        
 
     },
     removeToDo(id) {
@@ -22,28 +19,29 @@ let taskList = {
             }
         })
     },
-    changeTodoFilter(id, newText) {
-        this.todoList.filter(function (todoTask) {
-            if (todoTask.id === id) {
-                return true;
-            } else {
-                return false;
-            }
-        })[0].text = newText;
-    },
 
-    changeTodoMap(id, newText) {
-        this.todoList.map(function (todoTask) {
+    changeTextTodoMap(id, newText) {
+        this.todoList = this.todoList.map(function (todoTask) {
             if (todoTask.id === id) {
-                todoTask.text = newText;
+               return {
+                   ...todoTask,
+                   text: newText
+               }
+            } else {
+                return todoTask;
             }
         })
     },
 
     changeStatusTodoMap(id, newStatus) {
-        this.todoList.map(function (todoTask) {
+        this.todoList = this.todoList.map(function (todoTask) {
             if (todoTask.id === id && todoTask.status !== newStatus) {
-                todoTask.status = newStatus;
+                return {
+                    ...todoTask,
+                    status: newStatus
+                } 
+            } else {
+                return todoTask;
             }
         })
     }
@@ -51,18 +49,3 @@ let taskList = {
 
 Object.seal(taskList)
 console.log(Object.isSealed(taskList))
-
-taskList.addToDo({ status: true, text: 'text_1', id: 1 });
-taskList.addToDo({ status: false, text: 'text_2', id: 2 });
-taskList.addToDo({ status: true, text: 'text_3', id: 3 });
-taskList.addToDo({ status: false, text: 'text_4', id: 3 });
-
-taskList.changeStatusTodoMap(2, true);
-
-taskList.removeToDo(3);
-
-taskList.changeTodoFilter(2, 'changeTextByFilter');
-
-taskList.changeTodoMap(1, 'changeTextByMap');
-
-console.log(taskList.todoList);

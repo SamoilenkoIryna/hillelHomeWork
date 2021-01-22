@@ -1,7 +1,7 @@
-const calcSum = function() {
+const calcSum = function () {
     let result = 0;
-    
-    return function(num){
+
+    return function (num) {
 
         return result = result + num;
     };
@@ -9,26 +9,30 @@ const calcSum = function() {
 const calc = calcSum();
 
 
-const createCounter = function(start, step) {
+const createCounter = function (start, step) {
     let counter = start;
-   
-        return function(reset) { 
-            if (reset === 'resetCounter') {
-                counter = start;
-            }
 
-            return counter = counter + step;
-        };
-    
+    return function (reset) {
+        if (reset === 'resetCounter') {
+            counter = start;
+        }
+
+        return counter = counter + step;
+    };
+
 };
 
 const fbLikes = createCounter(0, 1);
 
-console.log('fb: ',fbLikes());
-console.log('fb: ',fbLikes());
-console.log('fb: ',fbLikes());
-console.log('fb: ',fbLikes('resetCounter'));
-console.log('fb: ',fbLikes());
-console.log('fb: ',fbLikes());
-console.log('fb: ',fbLikes());
-console.log('fb: ',fbLikes());
+console.log('Number of likes: ', fbLikes());
+console.log('Number of likes: ', fbLikes());
+console.log('Number of likes: ', fbLikes());
+console.log('Number of likes: ', fbLikes());
+console.log('Number of likes: ', fbLikes());
+console.log('Number of likes: ', fbLikes());
+console.log('Number of likes: ', fbLikes());
+console.log('Number of likes: ', fbLikes('resetCounter'));
+console.log('Number of likes: ', fbLikes());
+console.log('Number of likes: ', fbLikes());
+console.log('Number of likes: ', fbLikes());
+console.log('Number of likes: ', fbLikes());

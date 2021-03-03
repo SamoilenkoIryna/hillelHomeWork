@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arrLength = 10;
+        let arr = new Array(arrLength);
+
+        function fillTable() {
+            for (let i = 0; i < arrLength; i++) {
+                arr[i] = new Array(arrLength);
+                for (let j = 0; j < arrLength; j++) {
+                    arr[i][j] = i * 10 + j + 1;
+                }
+            }
+        }
+
+        function showTable() {
+            for (let i = 0; i < arrLength; i++) {
+                for (let j = 0; j < arrLength; j++) {
+                    document.write(arr[i][j] + " ");
+                }
+                document.write("<br />");
+            }
+        }
+
+        fillTable();
+        showTable();
+
+    </script>
+</body>
+
+</html>

@@ -32,38 +32,45 @@ const menu = {
             name: '🥃',
             time: 250
         },
-    ]
+    ],
+    dessert: [
+        {
+            name: '🍰',
+            time: 2500
+        },
+        {
+            name: '🍵',
+            time: 250
+        },
+    ],
+    sushi: [
+        {
+            name: '🍣',
+            time: 2500
+        },
+        {
+            name: '🥡',
+            time: 250
+        },
+    ],
 };
 
+const order = (menu) => {
 
-function order(menuName, onOrderComplete) {
-    return new Promise(function (resolve, reject) {
-        console.log('Start cooking...');
-
-        const result = [];
-
-        const getCookingResult = (name, index) => {
-            result[index] = name;
-            if (menuName.length === result.filter(Boolean).length) {
-                onOrderComplete(result);
-            }
-        };
-
-        function cooking({ name, time }, index) {
+    const cookFood = (name, time) => {
+       return new Promise((resolve, reject) => {
+            const condition = +Math.random().toFixed();
 
             setTimeout(() => {
-                const condition = true;
-                getCookingResult(
-                    condition ? resolve ({ name, status: 'complete' }) : reject ({ name, status: 'reject' }), index);
+                condition ? resolve(name) : reject(name);
             }, time);
-        }
+        });
+    }
+    return Promise.allSettled(Object.entries(menu).map(cookFood));
+};
 
-        menuName.forEach(cooking);
-    })
-}
-
-console.log(order(menu.burger, takeOrder));
-function takeOrder(orderResult) {
-    console.log(orderResult);
-}
-
+order(menu).then(result => {
+    const orderResult = result.filter(({status}) => status === "fulfilled")
+    const orderLResultLength = orderResult.length > 2;
+    orderLResultLength ? console.log(orderResult) : console.log('WTF');
+})
